@@ -1,0 +1,46 @@
+.restaurant-header {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-header img {
+  height: 150px;
+  object-fit: cover;
+}
+
+.category-title {
+  color: #495057;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.menu-item-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item-image {
+  object-fit: cover;
+  height: 120px;
+}
+
+.sticky-top {
+  z-index: 1020;
+}
+
+.list-group-item {
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.list-group-item:hover {
+  border-left-color: #007bff;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+}

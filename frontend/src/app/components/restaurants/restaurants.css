@@ -1,0 +1,30 @@
+.restaurant-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.restaurant-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.empty-state {
+  padding: 2rem;
+}
+
+.rating i {
+  font-size: 0.8rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+  border-color: #ced4da;
+}

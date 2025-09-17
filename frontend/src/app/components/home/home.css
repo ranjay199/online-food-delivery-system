@@ -1,0 +1,36 @@
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.category-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.restaurant-card {
+  transition: transform 0.3s ease;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+}
+
+.restaurant-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.rating i {
+  margin-right: 5px;
+}
+
+.step-icon {
+  width: 80px;
+  height: 80px;
+}
