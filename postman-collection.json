@@ -1,0 +1,366 @@
+{
+  "info": {
+    "name": "Online Food Delivery System API",
+    "description": "Complete API collection for testing the microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User Service",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"johndoe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password123\",\n  \"fullName\": \"John Doe\",\n  \"phoneNumber\": \"1234567890\",\n  \"address\": \"123 Main St, City, State\"\n}"
+            },
+            "url": {
+              "raw": "{{gateway_url}}/api/users/register",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "users", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usernameOrEmail\": \"johndoe\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{gateway_url}}/api/users/login",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "users", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{gateway_url}}/api/users/profile",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "users", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{gateway_url}}/api/users",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "users"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Restaurant Service",
+      "item": [
+        {
+          "name": "Create Restaurant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pizza Palace\",\n  \"description\": \"Best pizza in town with authentic Italian flavors\",\n  \"address\": \"456 Food Street, Downtown\",\n  \"phoneNumber\": \"555-0123\",\n  \"email\": \"info@pizzapalace.com\",\n  \"ownerId\": 1,\n  \"imageUrl\": \"https://example.com/pizza-palace.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{gateway_url}}/api/restaurants",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "restaurants"]
+            }
+          }
+        },
+        {
+          "name": "Get All Restaurants",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/restaurants",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "restaurants"]
+            }
+          }
+        },
+        {
+          "name": "Get Active Restaurants",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/restaurants/active",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "restaurants", "active"]
+            }
+          }
+        },
+        {
+          "name": "Get Restaurant by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/restaurants/1",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "restaurants", "1"]
+            }
+          }
+        },
+        {
+          "name": "Search Restaurants",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/restaurants/search?keyword=pizza",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "restaurants", "search"],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "pizza"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Menu Item",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Margherita Pizza\",\n  \"description\": \"Classic pizza with tomato sauce, mozzarella, and fresh basil\",\n  \"price\": 12.99,\n  \"category\": \"MAIN_COURSE\",\n  \"isVegetarian\": true,\n  \"isVegan\": false,\n  \"isSpicy\": false,\n  \"imageUrl\": \"https://example.com/margherita-pizza.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{gateway_url}}/api/restaurants/1/menu-items",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "restaurants", "1", "menu-items"]
+            }
+          }
+        },
+        {
+          "name": "Get Restaurant Menu Items",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/restaurants/1/menu-items",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "restaurants", "1", "menu-items"]
+            }
+          }
+        },
+        {
+          "name": "Get Available Menu Items",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/restaurants/1/menu-items/available",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "restaurants", "1", "menu-items", "available"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Order Service",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"restaurantId\": 1,\n  \"deliveryAddress\": \"123 Main St, City, State\",\n  \"specialInstructions\": \"Please ring the doorbell\",\n  \"orderItems\": [\n    {\n      \"menuItemId\": 1,\n      \"quantity\": 2,\n      \"specialInstructions\": \"Extra cheese\"\n    },\n    {\n      \"menuItemId\": 2,\n      \"quantity\": 1\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{gateway_url}}/api/orders",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "orders"]
+            }
+          }
+        },
+        {
+          "name": "Get All Orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/orders",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "orders"]
+            }
+          }
+        },
+        {
+          "name": "Get Order by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/orders/1",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "orders", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get User Orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/orders/user/1",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "orders", "user", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Restaurant Orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/orders/restaurant/1",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "orders", "restaurant", "1"]
+            }
+          }
+        },
+        {
+          "name": "Confirm Order",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{gateway_url}}/api/orders/1/confirm",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "orders", "1", "confirm"]
+            }
+          }
+        },
+        {
+          "name": "Start Preparing Order",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{gateway_url}}/api/orders/1/prepare",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "orders", "1", "prepare"]
+            }
+          }
+        },
+        {
+          "name": "Dispatch Order",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{gateway_url}}/api/orders/1/dispatch",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "orders", "1", "dispatch"]
+            }
+          }
+        },
+        {
+          "name": "Deliver Order",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{gateway_url}}/api/orders/1/deliver",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "orders", "1", "deliver"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Order",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "{{gateway_url}}/api/orders/1/cancel",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "orders", "1", "cancel"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "gateway_url",
+      "value": "http://localhost:8080",
+      "description": "API Gateway URL"
+    },
+    {
+      "key": "user_service_url",
+      "value": "http://localhost:8081",
+      "description": "User Service URL"
+    },
+    {
+      "key": "restaurant_service_url",
+      "value": "http://localhost:8082",
+      "description": "Restaurant Service URL"
+    },
+    {
+      "key": "order_service_url",
+      "value": "http://localhost:8083",
+      "description": "Order Service URL"
+    },
+    {
+      "key": "eureka_url",
+      "value": "http://localhost:8761",
+      "description": "Eureka Server URL"
+    },
+    {
+      "key": "jwt_token",
+      "value": "",
+      "description": "JWT Token from login response"
+    }
+  ]
+}
