@@ -1,0 +1,35 @@
+.cart-item img {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+}
+
+.cart-item {
+  padding: 1rem 0;
+}
+
+.input-group-sm .form-control {
+  max-width: 60px;
+}
+
+.empty-cart {
+  padding: 3rem 1rem;
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.btn-outline-secondary {
+  border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}

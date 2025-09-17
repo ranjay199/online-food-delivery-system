@@ -1,0 +1,182 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <!-- Header -->
+          <div class="text-center mb-4">
+            <i class="fas fa-user-circle fa-3x text-primary mb-3"></i>
+            <h3>{{isLoginMode ? 'Welcome Back' : 'Join Us'}}</h3>
+            <p class="text-muted">
+              {{isLoginMode ? 'Sign in to your account' : 'Create your account to start ordering'}}
+            </p>
+          </div>
+
+          <!-- Mode Toggle -->
+          <div class="text-center mb-4">
+            <div class="btn-group" role="group">
+              <button type="button" 
+                      class="btn" 
+                      [class.btn-primary]="isLoginMode"
+                      [class.btn-outline-primary]="!isLoginMode"
+                      (click)="isLoginMode = true; clearForms()">
+                Login
+              </button>
+              <button type="button" 
+                      class="btn"
+                      [class.btn-primary]="!isLoginMode"
+                      [class.btn-outline-primary]="isLoginMode"
+                      (click)="isLoginMode = false; clearForms()">
+                Register
+              </button>
+            </div>
+          </div>
+
+          <!-- Login Form -->
+          <form *ngIf="isLoginMode" (ngSubmit)="onLogin()">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">Email</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <input type="email" 
+                       class="form-control" 
+                       id="loginEmail"
+                       placeholder="Enter your email"
+                       [(ngModel)]="loginEmail"
+                       name="loginEmail"
+                       required>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <label for="loginPassword" class="form-label">Password</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" 
+                       class="form-control" 
+                       id="loginPassword"
+                       placeholder="Enter your password"
+                       [(ngModel)]="loginPassword"
+                       name="loginPassword"
+                       required>
+              </div>
+            </div>
+            
+            <div class="d-grid">
+              <button type="submit" 
+                      class="btn btn-primary"
+                      [disabled]="isLoading">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+                <i *ngIf="!isLoading" class="fas fa-sign-in-alt me-2"></i>
+                {{isLoading ? 'Signing In...' : 'Sign In'}}
+              </button>
+            </div>
+          </form>
+
+          <!-- Register Form -->
+          <form *ngIf="!isLoginMode" (ngSubmit)="onRegister()">
+            <div class="mb-3">
+              <label for="registerName" class="form-label">Full Name</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-user"></i>
+                </span>
+                <input type="text" 
+                       class="form-control" 
+                       id="registerName"
+                       placeholder="Enter your full name"
+                       [(ngModel)]="registerName"
+                       name="registerName"
+                       required>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label">Email</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <input type="email" 
+                       class="form-control" 
+                       id="registerEmail"
+                       placeholder="Enter your email"
+                       [(ngModel)]="registerEmail"
+                       name="registerEmail"
+                       required>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="registerPassword" class="form-label">Password</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" 
+                       class="form-control" 
+                       id="registerPassword"
+                       placeholder="Create a password"
+                       [(ngModel)]="registerPassword"
+                       name="registerPassword"
+                       required>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="registerPhone" class="form-label">Phone Number</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-phone"></i>
+                </span>
+                <input type="tel" 
+                       class="form-control" 
+                       id="registerPhone"
+                       placeholder="Enter your phone number"
+                       [(ngModel)]="registerPhone"
+                       name="registerPhone"
+                       required>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <label for="registerAddress" class="form-label">Address</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-map-marker-alt"></i>
+                </span>
+                <textarea class="form-control" 
+                          id="registerAddress"
+                          rows="2"
+                          placeholder="Enter your delivery address"
+                          [(ngModel)]="registerAddress"
+                          name="registerAddress"
+                          required></textarea>
+              </div>
+            </div>
+            
+            <div class="d-grid">
+              <button type="submit" 
+                      class="btn btn-primary"
+                      [disabled]="isLoading">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+                <i *ngIf="!isLoading" class="fas fa-user-plus me-2"></i>
+                {{isLoading ? 'Creating Account...' : 'Create Account'}}
+              </button>
+            </div>
+          </form>
+
+          <!-- Demo Note -->
+          <div class="alert alert-info mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Demo Mode:</strong> Use any email and password to login/register.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+<div class="container py-4" *ngIf="restaurant">
+  <!-- Restaurant Header -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card restaurant-header">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-md-3">
+              <img [src]="restaurant.image" class="img-fluid rounded" [alt]="restaurant.name">
+            </div>
+            <div class="col-md-9">
+              <h1 class="card-title mb-2">{{restaurant.name}}</h1>
+              <p class="card-text text-muted mb-3">{{restaurant.description}}</p>
+              
+              <div class="row g-3">
+                <div class="col-auto">
+                  <div class="d-flex align-items-center">
+                    <i class="fas fa-star text-warning me-1"></i>
+                    <span class="fw-bold">{{restaurant.rating}}</span>
+                    <span class="text-muted ms-1">Rating</span>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <div class="d-flex align-items-center">
+                    <i class="fas fa-clock text-primary me-1"></i>
+                    <span>{{restaurant.deliveryTime}}</span>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <div class="d-flex align-items-center">
+                    <i class="fas fa-truck text-success me-1"></i>
+                    <span>${{restaurant.deliveryFee}} delivery</span>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <span class="badge bg-primary">{{restaurant.category}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Categories -->
+  <div class="row">
+    <div class="col-lg-3 col-md-4 mb-4">
+      <div class="card sticky-top" style="top: 100px;">
+        <div class="card-header">
+          <h5 class="mb-0">
+            <i class="fas fa-list me-2"></i>
+            Menu Categories
+          </h5>
+        </div>
+        <div class="list-group list-group-flush">
+          <a *ngFor="let category of categories" 
+             [href]="'#category-' + category.toLowerCase().replace(' ', '-')"
+             class="list-group-item list-group-item-action">
+            {{category}}
+            <span class="badge bg-secondary float-end">
+              {{groupedItems[category].length}}
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9 col-md-8">
+      <!-- Menu Items by Category -->
+      <div *ngFor="let category of categories" class="mb-5">
+        <h3 [id]="'category-' + category.toLowerCase().replace(' ', '-')" 
+            class="category-title mb-4">
+          {{category}}
+        </h3>
+        
+        <div class="row g-4">
+          <div class="col-lg-6" *ngFor="let item of groupedItems[category]">
+            <div class="card h-100 menu-item-card">
+              <div class="row g-0 h-100">
+                <div class="col-4">
+                  <img [src]="item.image" class="img-fluid h-100 rounded-start menu-item-image" [alt]="item.name">
+                </div>
+                <div class="col-8">
+                  <div class="card-body d-flex flex-column h-100">
+                    <div class="flex-grow-1">
+                      <h6 class="card-title">
+                        {{item.name}}
+                        <i *ngIf="item.isVegetarian" class="fas fa-leaf text-success ms-1" title="Vegetarian"></i>
+                      </h6>
+                      <p class="card-text text-muted small">{{item.description}}</p>
+                    </div>
+                    <div class="mt-auto">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-primary">${{item.price}}</span>
+                        <button class="btn btn-primary btn-sm" (click)="addToCart(item)">
+                          <i class="fas fa-plus me-1"></i>
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Loading State -->
+<div class="container py-5 text-center" *ngIf="!restaurant">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <p class="mt-3 text-muted">Loading restaurant menu...</p>
+</div>

@@ -1,0 +1,116 @@
+<!-- Hero Section -->
+<div class="hero-section bg-primary text-white py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-4 fw-bold mb-4">Delicious Food Delivered to Your Door</h1>
+        <p class="lead mb-4">Order from your favorite restaurants and get fresh, hot food delivered fast.</p>
+        <a routerLink="/restaurants" class="btn btn-light btn-lg">
+          <i class="fas fa-search me-2"></i>
+          Browse Restaurants
+        </a>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=400&fit=crop" 
+             alt="Food delivery" class="img-fluid rounded-3 shadow">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Food Categories -->
+<div class="container my-5">
+  <h2 class="text-center mb-4">Popular Cuisines</h2>
+  <div class="row g-4">
+    <div class="col-md-3 col-sm-6">
+      <div class="category-card text-center p-4 rounded-3 h-100">
+        <i class="fas fa-pizza-slice fa-3x text-primary mb-3"></i>
+        <h5>Italian</h5>
+        <p class="text-muted">Pizza, Pasta & More</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="category-card text-center p-4 rounded-3 h-100">
+        <i class="fas fa-hamburger fa-3x text-primary mb-3"></i>
+        <h5>American</h5>
+        <p class="text-muted">Burgers, Fries & BBQ</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="category-card text-center p-4 rounded-3 h-100">
+        <i class="fas fa-fish fa-3x text-primary mb-3"></i>
+        <h5>Japanese</h5>
+        <p class="text-muted">Sushi, Ramen & More</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="category-card text-center p-4 rounded-3 h-100">
+        <i class="fas fa-pepper-hot fa-3x text-primary mb-3"></i>
+        <h5>Indian</h5>
+        <p class="text-muted">Curry, Biryani & Spices</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Featured Restaurants -->
+<div class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Top Rated Restaurants</h2>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" *ngFor="let restaurant of featuredRestaurants">
+        <div class="card h-100 shadow-sm restaurant-card">
+          <img [src]="restaurant.image" class="card-img-top" [alt]="restaurant.name">
+          <div class="card-body">
+            <h5 class="card-title">{{restaurant.name}}</h5>
+            <p class="card-text text-muted">{{restaurant.description}}</p>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="rating">
+                <i class="fas fa-star text-warning"></i>
+                <span>{{restaurant.rating}}</span>
+              </div>
+              <small class="text-muted">{{restaurant.deliveryTime}}</small>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge bg-secondary">{{restaurant.category}}</span>
+              <small class="text-muted">Delivery: ${{restaurant.deliveryFee}}</small>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <a [routerLink]="['/menu', restaurant.id]" class="btn btn-primary w-100">
+              View Menu
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- How It Works -->
+<div class="container my-5">
+  <h2 class="text-center mb-4">How It Works</h2>
+  <div class="row g-4">
+    <div class="col-md-4 text-center">
+      <div class="step-icon bg-primary text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center">
+        <i class="fas fa-search fa-2x"></i>
+      </div>
+      <h5>1. Browse Restaurants</h5>
+      <p class="text-muted">Choose from hundreds of restaurants and cuisines</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="step-icon bg-primary text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center">
+        <i class="fas fa-shopping-cart fa-2x"></i>
+      </div>
+      <h5>2. Add to Cart</h5>
+      <p class="text-muted">Select your favorite dishes and add them to cart</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="step-icon bg-primary text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center">
+        <i class="fas fa-truck fa-2x"></i>
+      </div>
+      <h5>3. Fast Delivery</h5>
+      <p class="text-muted">Get your food delivered hot and fresh to your door</p>
+    </div>
+  </div>
+</div>
