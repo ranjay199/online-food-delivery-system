@@ -4,4 +4,5 @@ include 'eureka-server'
 include 'api-gateway'
 include 'user-service'
 include 'restaurant-service'
-include 'order-service'
+// TODO: Re-enable order-service when source code is added
+// include 'order-service'

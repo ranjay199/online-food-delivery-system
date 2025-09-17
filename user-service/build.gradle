@@ -12,7 +12,7 @@ dependencies {
     
     // Database dependencies
     runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'com.mysql:mysql-connector-j'
     
     // Test dependencies
     testImplementation 'org.springframework.security:spring-security-test'
